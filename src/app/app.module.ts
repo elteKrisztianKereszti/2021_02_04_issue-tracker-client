@@ -5,11 +5,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { MyComponentComponent } from './components/my-component/my-component.component';
+import { IssueListComponent } from './components/issue-list/issue-list.component';
+import { IssueDetailComponent } from './components/issue-detail/issue-detail.component';
+import { IssueFormComponent } from './components/issue-form/issue-form.component';
+import { IndexComponent } from './components/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyComponentComponent
+    MyComponentComponent,
+    IssueListComponent,
+    IssueDetailComponent,
+    IssueFormComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

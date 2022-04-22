@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IndexComponent } from './components/index/index.component';
 import { IssueDetailComponent } from './components/issue-detail/issue-detail.component';
 import { IssueFormComponent } from './components/issue-form/issue-form.component';
 import { IssueListComponent } from './components/issue-list/issue-list.component';
@@ -7,8 +8,7 @@ import { IssueListComponent } from './components/issue-list/issue-list.component
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/issues",
-    pathMatch: "full",
+    component: IndexComponent,
   },
   {
     path: "issues",

@@ -3,5 +3,5 @@ export class Issue {
   title: string = '';
   description: string = '';
   place: string = '';
-  state: string = '';
+  status: string = '';
 }

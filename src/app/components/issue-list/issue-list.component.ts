@@ -10,6 +10,7 @@ import { IssueService } from 'src/app/issue.service';
 export class IssueListComponent implements OnInit {
   public issues: Array<Issue> = [];
   public selectedStatus: string;
+  public selectedIssue: Issue;
 
   constructor(private issueService: IssueService) {
     this.issues = issueService.getAll();

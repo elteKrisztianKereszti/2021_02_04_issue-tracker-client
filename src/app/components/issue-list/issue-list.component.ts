@@ -35,4 +35,7 @@ export class IssueListComponent implements OnInit {
     }
   }
 
+  public onSave(issue: Issue) {
+    this.issueService.update(issue.id, issue);
+  }
 }

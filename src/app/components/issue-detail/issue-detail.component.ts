@@ -9,7 +9,7 @@ import { IssueService } from 'src/app/issue.service';
   styleUrls: ['./issue-detail.component.css']
 })
 export class IssueDetailComponent implements OnInit {
-  public issue: Issue = new Issue();
+  public issue: Issue;
 
   constructor(private issueService: IssueService,
     private activatedRoute: ActivatedRoute) {
@@ -18,6 +18,6 @@ export class IssueDetailComponent implements OnInit {
 
   public ngOnInit(): void {
     let id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
-    this.issue = this.issueService.getAll().filter((issue: Issue) => issue.id === id)[0];
+    this.issue = this.issueService.get(id) as Issue;
   }
 }

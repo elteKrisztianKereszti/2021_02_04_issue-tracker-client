@@ -42,4 +42,15 @@ export class IssueService {
   public getAll(): Issue[] {
     return this.issues;
   }
+
+  public get(id: number): Issue | undefined {
+    let issue = this.issues.find((issue: Issue) => issue.id === id);
+    return issue;
+  }
+
+  public update(id: number, modifiedIssue: Issue): Issue | undefined {
+    let issue = this.get(id);
+    Object.assign(issue, modifiedIssue);
+    return issue;
+  }
 }

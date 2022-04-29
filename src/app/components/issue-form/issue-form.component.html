@@ -1,18 +1,14 @@
 <h2 class="display-2 my-3">New issue</h2>
 
-{{ issue | json }}
-
-<form action="" #issueForm="ngForm">
+<form action="" (ngSubmit)="onSave($event)" [formGroup]="issueForm">
   <div class="form-group">
     <label for="title">Title</label>
     <input
       type="text"
-      class="form-control is-invalid"
-      id="title"
+      class="form-control"
       placeholder="Title"
-      required
-      name="title"
-      [(ngModel)]="issue.title"
+      formControlName="title"
+      [class.is-invalid]="isInvalidAndTouchedOrDirty('title')"
     />
     <div class="invalid-feedback">Please provide a title!</div>
   </div>
@@ -20,11 +16,8 @@
     <label for="description">Description</label>
     <textarea
       class="form-control"
-      id="description"
       rows="5"
-      required
-      name="description"
-      [(ngModel)]="issue.description"
+      formControlName="description"
     ></textarea>
     <div class="invalid-feedback">Please provide a description!</div>
   </div>
@@ -33,20 +26,19 @@
     <input
       type="text"
       class="form-control"
-      id="place"
       placeholder="Place"
-      required
-      name="place"
-      pattern="^PC\d+$"
-      [(ngModel)]="issue.place"
+      formControlName="place"
+      [class.is-invalid]="isInvalidAndTouchedOrDirty('place')"
+      [class.is-valid]="issueForm.get('place')?.valid"
     />
     <div class="invalid-feedback">Please provide a place!</div>
   </div>
   <div class="form-group">
     <label for="status">Status</label>
-    <select class="form-control" id="status" required
-      name="status"
-      [(ngModel)]="issue.status"
+    <select
+      class="form-control"
+      formControlName="status"
+      [class.is-invalid]="isInvalidAndTouchedOrDirty('status')"
     >
       <option value="NEW">New</option>
       <option value="DOING">Doing</option>

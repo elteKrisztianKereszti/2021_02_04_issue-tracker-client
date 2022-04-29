@@ -27,6 +27,6 @@
   </a>
 </div>
 
-<app-issue-form [issue]="selectedIssue">
+<app-issue-form *ngIf="selectedIssue" [issue]="selectedIssue">
 
 </app-issue-form>

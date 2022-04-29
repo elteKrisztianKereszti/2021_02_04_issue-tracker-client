@@ -11,7 +11,7 @@ import { IssueFormComponent } from './components/issue-form/issue-form.component
 import { IndexComponent } from './components/index/index.component';
 import { GlinkComponent } from './components/glink/glink.component';
 import { StatusFilterComponent } from './components/status-filter/status-filter.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule
   ],
   providers: [],

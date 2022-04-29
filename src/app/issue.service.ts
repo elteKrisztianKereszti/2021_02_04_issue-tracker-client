@@ -53,4 +53,10 @@ export class IssueService {
     Object.assign(issue, modifiedIssue);
     return issue;
   }
+
+  public add(newIssue: Issue): Issue {
+    newIssue.id = new Date().getMilliseconds();
+    this.issues.push(newIssue);
+    return newIssue;
+  }
 }

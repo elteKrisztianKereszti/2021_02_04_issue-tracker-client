@@ -18,15 +18,22 @@ export class IssueFormComponent implements OnInit, OnChanges {
 
   public ngOnInit(): void {
     console.log('init');
+    this.issueForm = this.formBuilder.group({
+      id: [ this.issue?.id ],
+      title: [ this.issue?.title, [ Validators.required ]],
+      description: this.issue?.description,
+      place: [ this.issue?.place, [ Validators.required, Validators.pattern(/^PC\d+$/) ]],
+      status: [ this.issue?.status, [ Validators.required ]],
+    });
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.issueForm = this.formBuilder.group({
-      id: [ this.issue.id, [ Validators.required ]],
-      title: [ this.issue.title, [ Validators.required ]],
-      description: this.issue.description,
-      place: [ this.issue.place, [ Validators.required, Validators.pattern(/^PC\d+$/) ]],
-      status: [ this.issue.status, [ Validators.required ]],
+      id: [ this.issue?.id ],
+      title: [ this.issue?.title, [ Validators.required ]],
+      description: this.issue?.description,
+      place: [ this.issue?.place, [ Validators.required, Validators.pattern(/^PC\d+$/) ]],
+      status: [ this.issue?.status, [ Validators.required ]],
     });
   }
 

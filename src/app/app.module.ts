@@ -12,6 +12,7 @@ import { IndexComponent } from './components/index/index.component';
 import { GlinkComponent } from './components/glink/glink.component';
 import { StatusFilterComponent } from './components/status-filter/status-filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IssueNewComponent } from './components/issue-new/issue-new.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IssueFormComponent,
     IndexComponent,
     GlinkComponent,
-    StatusFilterComponent
+    StatusFilterComponent,
+    IssueNewComponent
   ],
   imports: [
     BrowserModule,

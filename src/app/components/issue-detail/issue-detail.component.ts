@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Issue } from 'src/app/issue';
 import { IssueService } from 'src/app/issue.service';
 
@@ -16,7 +16,7 @@ export class IssueDetailComponent implements OnInit {
       console.log(activatedRoute);
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     let id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
     this.issue = this.issueService.getAll().filter((issue: Issue) => issue.id === id)[0];
   }

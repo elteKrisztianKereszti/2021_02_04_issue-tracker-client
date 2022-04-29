@@ -10,6 +10,8 @@ import { IssueDetailComponent } from './components/issue-detail/issue-detail.com
 import { IssueFormComponent } from './components/issue-form/issue-form.component';
 import { IndexComponent } from './components/index/index.component';
 import { GlinkComponent } from './components/glink/glink.component';
+import { StatusFilterComponent } from './components/status-filter/status-filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { GlinkComponent } from './components/glink/glink.component';
     IssueDetailComponent,
     IssueFormComponent,
     IndexComponent,
-    GlinkComponent
+    GlinkComponent,
+    StatusFilterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [],

@@ -8,14 +8,30 @@ import { IssueService } from 'src/app/issue.service';
   styleUrls: ['./issue-list.component.css']
 })
 export class IssueListComponent implements OnInit {
-
   public issues: Array<Issue> = [];
+  public selectedStatus: string;
 
   constructor(private issueService: IssueService) {
     this.issues = issueService.getAll();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.selectedStatus = '';
+    this.filter();
+  }
+
+  public onFilterChanged(newStatus: string): void {
+    console.log(newStatus);
+    this.selectedStatus = newStatus;
+    this.filter();
+  }
+
+  public filter(): void {
+    this.issues = this.issueService.getAll();
+
+    if (this.selectedStatus) {
+      this.issues = this.issues.filter((issue: Issue) => issue.status === this.selectedStatus);
+    }
   }
 
 }

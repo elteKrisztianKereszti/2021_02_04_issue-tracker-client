@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Issue } from 'src/app/issue';
 import { IssueService } from 'src/app/issue.service';
 
@@ -12,12 +12,19 @@ export class IssueDetailComponent implements OnInit {
   public issue: Issue;
 
   constructor(private issueService: IssueService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
       console.log(activatedRoute);
   }
 
   public ngOnInit(): void {
     let id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
     this.issue = this.issueService.get(id) as Issue;
+  }
+
+  public onDeleteClick() {
+    this.issueService.delete(this.issue.id);
+    console.log(this.issue);
+    this.router.navigate(['/issues']);
   }
 }

@@ -11,6 +11,7 @@ import { IndexComponent } from './components/index/index.component';
 import { StatusFilterComponent } from './components/status-filter/status-filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IssueNewComponent } from './components/issue-new/issue-new.component';
+import { IssueEditComponent } from './components/issue-edit/issue-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { IssueNewComponent } from './components/issue-new/issue-new.component';
     IssueListComponent,
     IssueDetailComponent,
     IssueFormComponent,
+    IssueEditComponent,
     IndexComponent,
     StatusFilterComponent,
     IssueNewComponent

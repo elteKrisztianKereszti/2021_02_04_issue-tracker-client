@@ -36,7 +36,7 @@ export class IssueFormComponent implements OnInit, OnChanges {
     });
   }
 
-  public onSave(e: any): void {
+  public onSave(): void {
     this.save.emit(this.issueForm.value);
   }
 

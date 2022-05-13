@@ -1,6 +1,6 @@
-<h2 class="display-2 my-3">New issue</h2>
+<h2 class="display-2 my-3">{{ this.issue ? 'Edit' : 'New' }} issue</h2>
 
-<form action="" (ngSubmit)="onSave($event)" [formGroup]="issueForm">
+<form action="" (ngSubmit)="onSave()" [formGroup]="issueForm">
   <div class="form-group">
     <label for="title">Title</label>
     <input

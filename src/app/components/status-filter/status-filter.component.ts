@@ -17,19 +17,12 @@ export class StatusFilterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   public ngOnInit(): void {
-    console.log('init');
     this.radioGroupForm = this.formBuilder.group({
       status: this.status
     });
   }
 
-  public onChange() {
-    // return { status: FOO }
-    // console.log(this.radioGroupForm.value);
-
-    // return FOO
-    // console.log(this.radioGroupForm.get('status').value);
-
+  public onChange(): void {
     this.filterChanged.emit(this.radioGroupForm.get('status')?.value);
   }
 }

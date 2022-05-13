@@ -14,7 +14,6 @@ export class IssueDetailComponent implements OnInit {
   constructor(private issueService: IssueService,
     private activatedRoute: ActivatedRoute,
     private router: Router) {
-      console.log(activatedRoute);
   }
 
   public ngOnInit(): void {
@@ -24,7 +23,6 @@ export class IssueDetailComponent implements OnInit {
 
   public onDeleteClick() {
     this.issueService.delete(this.issue.id);
-    console.log(this.issue);
     this.router.navigate(['/issues']);
   }
 }

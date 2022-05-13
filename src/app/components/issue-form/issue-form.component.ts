@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Issue } from 'src/app/issue';
 
@@ -17,7 +17,6 @@ export class IssueFormComponent implements OnInit, OnChanges {
   constructor(private formBuilder: FormBuilder) { }
 
   public ngOnInit(): void {
-    console.log('init');
     this.issueForm = this.formBuilder.group({
       id: [ this.issue?.id ],
       title: [ this.issue?.title, [ Validators.required ]],
@@ -27,7 +26,7 @@ export class IssueFormComponent implements OnInit, OnChanges {
     });
   }
 
-  public ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(): void {
     this.issueForm = this.formBuilder.group({
       id: [ this.issue?.id ],
       title: [ this.issue?.title, [ Validators.required ]],
@@ -37,12 +36,11 @@ export class IssueFormComponent implements OnInit, OnChanges {
     });
   }
 
-  public onSave(e: any) {
-    console.log(this.issueForm);
+  public onSave(e: any): void {
     this.save.emit(this.issueForm.value);
   }
 
-  public isInvalidAndTouchedOrDirty(name: string) {
+  public isInvalidAndTouchedOrDirty(name: string): boolean {
     return !this.issueForm.get(name)?.valid && (this.issueForm.get(name)?.touched || this.issueForm.get(name)?.dirty);
   }
 }

@@ -18,8 +18,7 @@ export class IssueEditComponent {
     this.issue = this.issueService.get(id) as Issue;
   }
 
-  public onSave(issue: Issue) {
-    console.log(issue);
+  public onSave(issue: Issue): void {
     this.issueService.update(issue.id, issue);
     this.router.navigate(['/issues']);
   }

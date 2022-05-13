@@ -12,8 +12,7 @@ export class IssueNewComponent {
 
   constructor(private issueService: IssueService, private router: Router) { }
 
-  public onSave(issue: Issue) {
-    console.log(issue);
+  public onSave(issue: Issue): void {
     this.issueService.add(issue);
     this.router.navigate(['/issues']);
   }

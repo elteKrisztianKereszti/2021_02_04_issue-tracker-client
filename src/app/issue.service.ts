@@ -1,67 +1,40 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Issue } from './issue';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IssueService {
+  private url = 'http://127.0.0.10/api/issues';
 
-  private issues: Array<Issue> = [
-    {
-      id : 1,
-      title: 'Bad Machine',
-      description: 'Donec id elit non mi porta gravida at eget metus. Maecenas sed diam egetrisus varius blandit.',
-      place: 'PC1',
-      status: 'NEW'
-    },
-    {
-      id : 2,
-      title: 'Bad Mosue',
-      description: 'Mickey Mouse destoyed the mouse',
-      place: 'PC2',
-      status: 'DOING'
-    },
-    {
-      id : 3,
-      title: 'Jim Raynor cannot play',
-      description: 'Jim Raynor cannot start the starcraft on 386 arch pc',
-      place: 'PC42',
-      status: 'NEW'
-    },
-    {
-      id : 4,
-      title: 'No power',
-      description: 'Summon more Pylon',
-      place: 'PC66',
-      status: 'DONE'
-    }
-  ];
+  constructor(private httpClient: HttpClient) {
 
-  public getAll(): Issue[] {
-    return this.issues;
   }
 
-  public get(id: number): Issue | undefined {
-    let issue = this.issues.find((issue: Issue) => issue.id === id);
-    return issue;
+  // deprecated solution
+  public getAllWithPromise(): Promise<Issue[]> {
+    return this.httpClient.get<Issue[]>(this.url).toPromise();
   }
 
-  public update(id: number, modifiedIssue: Issue): Issue | undefined {
-    let issue = this.get(id);
-    Object.assign(issue, modifiedIssue);
-    return issue;
+  public getAll(): Observable<Issue[]> {
+    return this.httpClient.get<Issue[]>(this.url);
   }
 
-  public add(newIssue: Issue): Issue {
-    newIssue.id = new Date().getMilliseconds();
-    this.issues.push(newIssue);
-    return newIssue;
+  public get(id: number): Observable<Issue> {
+    return this.httpClient.get<Issue>(`${this.url}/${id}`);
   }
 
-  public delete(id: number): void {
-    let issue: Issue = this.get(id);
-    if (issue) {
-      this.issues.splice(this.issues.indexOf(issue), 1);
-    }
+  public update(id: number, modifiedIssue: Issue): Observable<Issue> {
+    return this.httpClient.put<Issue>(`${this.url}/${id}`, modifiedIssue);
+  }
+
+  public add(newIssue: Issue): Observable<Issue> {
+    return this.httpClient.post<Issue>(this.url, newIssue);
+  }
+
+  public delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.url}/${id}`);
   }
 }
